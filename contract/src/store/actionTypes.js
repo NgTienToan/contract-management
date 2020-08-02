@@ -1,0 +1,8 @@
+/**
+ * action in auth
+ */
+
+export const ADD_COUNTRY_TO_TABLE = "ADD_COUNTRY_TO_TABLE";
+export const ADD_SIGN_EMPLOYEE_TO_TABLE = "ADD_SIGN_EMPLOYEE_TO_TABLE";
+export const ADD_PARTNER_TO_TABLE = "ADD_PARTNER_TO_TABLE";
+

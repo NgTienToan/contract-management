@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Form, Input, Button, Select } from 'antd';
+import { UpOutlined } from '@ant-design/icons';
 import style from './FormAddOption.css'
-
+import * as actions from '../store/actions';
+import { connect } from 'react-redux';
 const { Option } = Select;
 
 const layout = {
@@ -12,12 +14,15 @@ const tailLayout = {
   wrapperCol: { offset: 8, span: 16 },
 };
 
-const FormAddOptions = () => {
+const FormAddOptions = (props) => {
+
   const [form] = Form.useForm();
 
 
+
+
   const onFinish = values => {
-    console.log(values);
+    props.addToTable(values)
   };
 
   const onReset = () => {
@@ -28,42 +33,38 @@ const FormAddOptions = () => {
   return (
     <Form {...layout} form={form} name="control-hooks" onFinish={onFinish} className="FormAddOption">
       <Form.Item name="country" label="Quốc Gia" rules={[{ required: true }]} >
-        <Input  />
+        <Input />
+
       </Form.Item>
+
       <Form.Item name="land" label="Châu Lục" rules={[{ required: true }]}>
         <Select
           placeholder="Chọn châu lục"
-        //   onChange={onGenderChange}
+          //   onChange={onGenderChange}
           allowClear
-         
+
         >
           <Option value="asia">Châu Á</Option>
           <Option value="euro">Châu ÂU</Option>
           <Option value="america">Châu Mỹ</Option>
         </Select>
       </Form.Item>
-      {/* <Form.Item
-        noStyle
-        shouldUpdate={(prevValues, currentValues) => prevValues.gender !== currentValues.gender}
-      >
-        {({ getFieldValue }) => {
-          return getFieldValue('gender') === 'other' ? (
-            <Form.Item name="customizeGender" label="Customize Gender" rules={[{ required: true }]}>
-              <Input />
-            </Form.Item>
-          ) : null;
-        }}
-      </Form.Item> */}
       <Form.Item {...tailLayout}>
         <Button type="primary" htmlType="submit" >
           Submit
         </Button>
-        <Button htmlType="button" onClick={onReset} style={{marginLeft: 10}}>
+        <Button htmlType="button" onClick={onReset} style={{ marginLeft: 10 }}>
           Reset
         </Button>
-        
+
       </Form.Item>
     </Form>
   );
 };
-export default FormAddOptions;
+const mapStateToProps = state => ({
+
+})
+const mapDispatchToProps = dispatch => ({
+  addToTable: (country) => dispatch(actions.addToTable(country)),
+})
+export default connect(mapStateToProps, mapDispatchToProps)(FormAddOptions);

@@ -1,25 +1,72 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Table, Input, InputNumber, Popconfirm, Form } from 'antd';
-// import FormAddOptions from '.../common/FormAddOptions'
+
+import {
+  DeleteOutlined,
+  FormOutlined
+} from '@ant-design/icons';
+
+import * as actions from '../../store/actions';
+import { connect } from 'react-redux';
 const originData = [
-      {
-        key: '1',
-        name: 'John Brown',
-        age: 32,
-        address: 'New York No. 1 Lake Park',    
-      },
-      {
-        key: '2',
-        name: 'Jim Green',
-        age: 42,
-        address: 'London No. 1 Lake Park',
-      },
-      {
-        key: '3',
-        name: 'Joe Black',
-        age: 32,
-        address: 'Sidney No. 1 Lake Park',
-      }
+      // {
+      //   key: '1',
+      //   country: 'Mỹ',
+      //   land: 'Châu Mỹ',   
+      // },
+      // {
+      //   key: '2',
+      //   country: 'Nhật Bản',
+      //   land: 'Châu Á',
+      // },
+      // {
+      //   key: '3',
+      //   country: 'Đức',
+      //   land: 'Châu Âu',
+      // },
+      // {
+      //   key: '4',
+      //   country: 'Mỹ',
+      //   land: 'Châu Mỹ',   
+      // },
+      // {
+      //   key: '5',
+      //   country: 'Nhật Bản',
+      //   land: 'Châu Á',
+      // },
+      // {
+      //   key: '6',
+      //   country: 'Đức',
+      //   land: 'Châu Âu',
+      // },{
+      //   key: '7',
+      //   country: 'Mỹ',
+      //   land: 'Châu Mỹ',   
+      // },
+      // {
+      //   key: '8',
+      //   country: 'Nhật Bản',
+      //   land: 'Châu Á',
+      // },
+      // {
+      //   key: '9',
+      //   country: 'Đức',
+      //   land: 'Châu Âu',
+      // },{
+      //   key: '10',
+      //   country: 'Mỹ',
+      //   land: 'Châu Mỹ',   
+      // },
+      // {
+      //   key: '11',
+      //   country: 'Nhật Bản',
+      //   land: 'Châu Á',
+      // },
+      // {
+      //   key: '12',
+      //   country: 'Đức',
+      //   land: 'Châu Âu',
+      // }
 ];
 
 const EditableCell = ({
@@ -57,9 +104,9 @@ const EditableCell = ({
   );
 };
 
-const EditableTable = () => {
+const EdittableCountry = (props) => {
   const [form] = Form.useForm();
-  const [data, setData] = useState(originData);
+  const [data, setData] = useState([]);
   const [editingKey, setEditingKey] = useState('');
 
   const isEditing = record => record.key === editingKey;
@@ -78,12 +125,23 @@ const EditableTable = () => {
     setEditingKey('');
   };
 
+  useEffect(() => {
+    if(props.country != null){
+    setData([...data, props.country])}
+  }, [props.country])
+
+  useEffect(() => {
+    console.log(data.length)
+
+  }, [])
+
   const handleDelete = async (key) => {
     // const originData = [...originData];
     await setData(data.filter(item => item.key !==key));
     console.log(data)
   };
 
+  
   const save = async key => {
     try {
       const row = await form.validateFields();
@@ -105,25 +163,28 @@ const EditableTable = () => {
     }
   };
 
-  const columns = [
+  
+
+  const columns =             [
     {
       title: 'Quốc Gia',
-      dataIndex: 'name',
-      width: '25%',
+      dataIndex: 'country',
+      width: '35%',
       editable: true,
     },
     {
       title: 'Châu Lục',
-      dataIndex: 'age',
-      width: '15%',
+      dataIndex: 'land',
+      width: '35%',
       editable: true,
     },
     {
       title: 'Sửa',
       dataIndex: 'operation',
+      width: '15%',
       render: (_, record) => {
         const editable = isEditing(record);
-        return editable ? (
+         return editable ? (
           <span>
             <a
               href="javascript:;"
@@ -140,7 +201,7 @@ const EditableTable = () => {
           </span>
         ) : (
           <a disabled={editingKey !== ''} onClick={() => edit(record)}>
-            Edit
+            <FormOutlined size="35px"/>
           </a>
         );
       },
@@ -148,12 +209,14 @@ const EditableTable = () => {
     {
         title: 'Xóa',
         dataIndex: 'delete',
-        render: (text, record) =>
-        originData.length >= 1 ? (
+        width: '15%',
+        render: (text, record) =>{
+          console.log(data)
+        return data.length >= 1 ? (
           <Popconfirm title="Sure to delete?" onConfirm={()=>handleDelete(record.key)}>
-            <a>Delete</a>
+            <a><DeleteOutlined/></a>
           </Popconfirm>
-        ) : null
+        ) : null}
     }
   ];
   const mergedColumns = columns.map(col => {
@@ -191,4 +254,9 @@ const EditableTable = () => {
     </Form>
   );
 };
-export default EditableTable;
+const mapStateToProps = state => ({
+  country: state.formEdit.currentCountry
+})
+const mapDispatchToProps = dispatch => ({
+})
+export default connect(mapStateToProps, mapDispatchToProps)(EdittableCountry);
