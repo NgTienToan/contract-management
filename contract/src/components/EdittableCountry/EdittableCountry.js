@@ -247,6 +247,7 @@ const EdittableCountry = (props) => {
         dataSource={data}
         columns={mergedColumns}
         rowClassName="editable-row"
+        
         pagination={{
           onChange: cancel,
         }}

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Menu, Dropdown, message, Button } from 'antd';
 import { DownOutlined, CaretDownOutlined , UpOutlined} from '@ant-design/icons';
 import FormAddOptions from './FormAddOptions'
+import PartnerInfoAddForm from '../components/PartnerInfo/PartnerInfoAddForm'
 import style from './AddOptions.css'
 
 function AddOptions() {
@@ -39,7 +40,8 @@ function AddOptions() {
             {toggle ?   
                             <div >                
                                 <Button   onClick={()=>setToggle(false)}><UpOutlined /></Button>
-                                <FormAddOptions/>    
+                                {/* <FormAddOptions/>     */}
+                                <PartnerInfoAddForm />
                             </div> 
                     : null
             }

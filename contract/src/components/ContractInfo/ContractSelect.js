@@ -1,6 +1,9 @@
 import React from 'react'
 import { Select } from 'antd';
 
+import * as actions from '../../store/actions';
+import { connect } from 'react-redux';
+
 const { Option } = Select;
 
 const handleChange = (value) => {
@@ -20,4 +23,10 @@ function ContractSelect() {
     )
 }
 
-export default ContractSelect
+const mapStateToProps = state => ({
+    
+})
+const mapDispatchToProps = dispatch => ({
+    
+})  
+export default connect(mapStateToProps, mapDispatchToProps)(ContractSelect);

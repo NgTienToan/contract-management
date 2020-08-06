@@ -7,13 +7,9 @@ import {
   Switch,
 
 } from 'react-router-dom';
-import EdittableCountry from '../components/EdittableCountry/EdittableCountry'
-import SignEmployee from '../components/EdittableEmployee/SignEmployee'
-import PartnerEmployee from '../components/EdittableEmployee/PartnerEmployee'
-import AddOptions from '../common/AddOptions'
-import ContractInfo from '../components/ContractInfo/ContractInfo'
 import style from './Layout.css'
-
+import Setting from '../containers/Content/Setting/Setting'
+import Contract from '../containers/Content/Contract/Contract'
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
@@ -72,27 +68,8 @@ class SiderDemo extends React.Component {
             }}
           >
             <Switch>
-              <Route>
-                {/* <Tabs type="card">
-                  <TabPane tab="Quốc Gia" key="1">
-                    <AddOptions
-                      
-                    />
-                    <EdittableCountry />
-                  </TabPane>
-                  <TabPane tab="Người kí" key="2">
-                    <AddOptions 
-      
-                    />
-                    <SignEmployee />
-                  </TabPane>
-                  <TabPane tab="Đơn vị theo dõi" key="3">
-                    <PartnerEmployee />
-                  </TabPane>
-
-                </Tabs> */}
-                <ContractInfo />
-              </Route>
+              <Route path="/"><Setting /></Route>
+              <Route path="/contracInfo"><Contract /></Route>
               
             </Switch>
           </Content>

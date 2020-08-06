@@ -8,63 +8,86 @@ import {
 const { TextArea } = Input;
 const originData = [
     {
-        key: '1',
-        country: 'Mỹ',
-        land: 'Châu Mỹ',
+        partnerName: 'Claude Bernard 1',
+        signEmployee: 'VNU-UET',
+        content: 'Châu Mỹ',
+        date: '17/12/2019',
+        note : 'Hello xin chào',
+        renew: ''
     },
     {
-        key: '2',
-        country: 'Nhật Bản',
-        land: 'Châu Á',
+        partnerName: 'Claude Bernard 2',
+        signEmployee: 'VNU-ULIS',
+        content: 'Châu Mỹ',
+        date: '17/12/2019',
+        note : 'Hello xin chào',
+        renew: ''
     },
     {
-        key: '3',
-        country: 'Đức',
-        land: 'Châu Âu',
+        partnerName: 'Claude Bernard 1',
+        signEmployee: 'VNU-UET',
+        content: 'Châu Mỹ',
+        date: '17/12/2019',
+        note : 'Hello xin chào',
+        renew: ''
     },
     {
-        key: '4',
-        country: 'Mỹ',
-        land: 'Châu Mỹ',
+        partnerName: 'Claude Bernard 2',
+        signEmployee: 'VNU-ULIS',
+        content: 'Châu Mỹ',
+        date: '17/12/2019',
+        note : 'Hello xin chào',
+        renew: ''
     },
     {
-        key: '5',
-        country: 'Nhật Bản',
-        land: 'Châu Á',
+        partnerName: 'Claude Bernard 1',
+        signEmployee: 'VNU-UET',
+        content: 'Châu Mỹ',
+        date: '17/12/2019',
+        note : 'Hello xin chào',
+        renew: ''
     },
     {
-        key: '6',
-        country: 'Đức',
-        land: 'Châu Âu',
-    }, {
-        key: '7',
-        country: 'Mỹ',
-        land: 'Châu Mỹ',
+        partnerName: 'Claude Bernard 2',
+        signEmployee: 'VNU-ULIS',
+        content: 'Châu Mỹ',
+        date: '17/12/2019',
+        note : 'Hello xin chào',
+        renew: ''
     },
     {
-        key: '8',
-        country: 'Nhật Bản',
-        land: 'Châu Á',
+        partnerName: 'Claude Bernard 1',
+        signEmployee: 'VNU-UET',
+        content: 'Châu Mỹ',
+        date: '17/12/2019',
+        note : 'Hello xin chào',
+        renew: ''
     },
     {
-        key: '9',
-        country: 'Đức',
-        land: 'Châu Âu',
-    }, {
-        key: '10',
-        country: 'Mỹ',
-        land: 'Châu Mỹ',
+        partnerName: 'Claude Bernard 1',
+        signEmployee: 'VNU-UET',
+        content: 'Châu Mỹ',
+        date: '17/12/2019',
+        note : 'Hello xin chào',
+        renew: ''
     },
     {
-        key: '11',
-        country: 'Nhật Bản',
-        land: 'Châu Á',
+        partnerName: 'Claude Bernard 1',
+        signEmployee: 'VNU-UET',
+        content: 'Châu Mỹ',
+        date: '17/12/2019',
+        note : 'Hello xin chào',
+        renew: ''
     },
     {
-        key: '12',
-        country: 'Đức',
-        land: 'Châu Âu',
-    }
+        partnerName: 'Claude Bernard 1',
+        signEmployee: 'VNU-UET',
+        content: 'Châu Mỹ',
+        date: '17/12/2019',
+        note : 'Hello xin chào',
+        renew: ''
+    },
+
 ];
 
 const EditableCell = ({
@@ -156,37 +179,37 @@ const ContractInfoTable = () => {
     const columns = [
         {
             title: 'Tên cơ quan hợp tác',
-            dataIndex: 'country',
+            dataIndex: 'partnerName',
             width: '15%',
             editable: true,
         },
         {
             title: 'Đơn vị theo dõi',
-            dataIndex: 'land',
+            dataIndex: 'signEmployee',
             width: '15%',
             editable: true,
         },
         {
             title: 'Nội dung hợp tác chính',
-            dataIndex: 'land',
+            dataIndex: 'content',
             width: '35%',
             editable: true,
         },
         {
             title: 'Ngày kí ',
-            dataIndex: 'land',
+            dataIndex: 'date',
             width: '10%',
             editable: true,
         },
         {
             title: 'Lưu ý',
-            dataIndex: 'land',
+            dataIndex: 'note',
             width: '10%',
             editable: true,
         },
         {
             title: 'Renew',
-            dataIndex: 'land',
+            dataIndex: 'renew',
             width: '10%',
             editable: true,
         },

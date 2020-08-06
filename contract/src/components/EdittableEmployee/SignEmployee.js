@@ -2,72 +2,76 @@ import React, { useState, useEffect } from 'react';
 import { Table, Input, InputNumber, Popconfirm, Form } from 'antd';
 
 import {
-    DeleteOutlined,
-    FormOutlined
-  } from '@ant-design/icons';
+  DeleteOutlined,
+  FormOutlined
+} from '@ant-design/icons';
 import * as actions from '../../store/actions';
+
+
 import { connect } from 'react-redux';
+
+const { Search } = Input;
 const originData = [
-    // {
-    //     key: '1',
-    //     name: 'Nguyễn Tiến Toàn',
-    //     role: 'Châu Mỹ',
-    //     unit: 'FIT'   
-    //   },
-    //   {
-    //     key: '2',
-    //     name: 'Nguyễn Tiến Toàn',
-    //     role: 'Châu Mỹ',
-    //     unit: 'FIT'   
-    //   },
-    //   {
-    //     key: '3',
-    //     name: 'Nguyễn Tiến Toàn',
-    //     role: 'Châu Mỹ',
-    //     unit: 'FIT'   
-    //   },
-    //   {
-    //     key: '4',
-    //     name: 'Nguyễn Tiến Toàn',
-    //     role: 'Châu Mỹ',
-    //     unit: 'FIT'   
-    //   },
-    //   {
-    //     key: '5',
-    //     name: 'Nguyễn Tiến Toàn',
-    //     role: 'Châu Mỹ',
-    //     unit: 'FIT'   
-    //   },
-    //   {
-    //     key: '6',
-    //     name: 'Nguyễn Tiến Toàn',
-    //     role: 'Châu Mỹ',
-    //     unit: 'FIT'   
-    //   },
-    //   {
-    //     key: '7',
-    //     name: 'Nguyễn Tiến Toàn',
-    //     role: 'Châu Mỹ',
-    //     unit: 'FIT'   
-    //   },
-    //   {
-    //     key: '8',
-    //     name: 'Nguyễn Tiến Toàn',
-    //     role: 'Châu Mỹ',
-    //     unit: 'FIT'   
-    //   },
-    //   {
-    //     key: '9',
-    //     name: 'Nguyễn Tiến Toàn',
-    //     role: 'Châu Mỹ',
-    //     unit: 'FIT'   
-    //   },
-    //   {
-    //     key: '10',
-    //     name: 'Nguyễn Tiến Toàn',
-    //     role: 'Châu Mỹ',
-    //     unit: 'FIT'   
-    //   },
+  {
+      key: '1',
+      name: 'Nguyễn Tiến Toàn',
+      role: 'Châu Mỹ',
+      unit: 'FIT'   
+    },
+    {
+      key: '2',
+      name: 'Nguyễn Tiến Toàn',
+      role: 'Châu Mỹ',
+      unit: 'FIT'   
+    },
+    {
+      key: '3',
+      name: 'Nguyễn Tiến Toàn',
+      role: 'Châu Mỹ',
+      unit: 'FIT'   
+    },
+    {
+      key: '4',
+      name: 'Nguyễn Tiến Toàn',
+      role: 'Châu Mỹ',
+      unit: 'FIT'   
+    },
+    {
+      key: '5',
+      name: 'Nguyễn Tiến Toàn',
+      role: 'Châu Mỹ',
+      unit: 'FIT'   
+    },
+    {
+      key: '6',
+      name: 'Nguyễn Tiến Toàn',
+      role: 'Châu Mỹ',
+      unit: 'FIT'   
+    },
+    {
+      key: '7',
+      name: 'Nguyễn Tiến Toàn',
+      role: 'Châu Mỹ',
+      unit: 'FIT'   
+    },
+    {
+      key: '8',
+      name: 'Nguyễn Tiến Toàn',
+      role: 'Châu Mỹ',
+      unit: 'FIT'   
+    },
+    {
+      key: '9',
+      name: 'Nguyễn Tiến Toàn',
+      role: 'Châu Mỹ',
+      unit: 'FIT'   
+    },
+    {
+      key: '10',
+      name: 'Nguyễn Tiến Toàn',
+      role: 'Châu Mỹ',
+      unit: 'FIT'   
+    },
 
 ];
 
@@ -100,8 +104,8 @@ const EditableCell = ({
           {inputNode}
         </Form.Item>
       ) : (
-        children
-      )}
+          children
+        )}
     </td>
   );
 };
@@ -128,13 +132,14 @@ const SignEmployee = (props) => {
   };
 
   useEffect(() => {
-    if(props.signEmployee != null){
-    setData([...data, props.signEmployee])}
+    if (props.signEmployee != null) {
+      setData([...data, props.signEmployee])
+    }
   }, [props.signEmployee])
 
   const handleDelete = async (key) => {
     // const originData = [...originData];
-    await setData(data.filter(item => item.key !==key));
+    await setData(data.filter(item => item.key !== key));
     console.log(data)
   };
 
@@ -161,10 +166,10 @@ const SignEmployee = (props) => {
 
   const columns = [
     {
-        title: 'Mã người kí',
-        dataIndex: 'key',
-        width: '10%',
-        editable: true,
+      title: 'Mã người kí',
+      dataIndex: 'key',
+      width: '10%',
+      editable: true,
     },
     {
       title: 'Người kí',
@@ -179,11 +184,11 @@ const SignEmployee = (props) => {
       editable: true,
     },
     {
-        title: 'Đơn vị',
-        dataIndex: 'unit',
-        width: '15%',
-        editable: true,
-      },
+      title: 'Đơn vị',
+      dataIndex: 'unit',
+      width: '15%',
+      editable: true,
+    },
     {
       title: 'Sửa',
       dataIndex: 'operation',
@@ -206,19 +211,19 @@ const SignEmployee = (props) => {
             </Popconfirm>
           </span>
         ) : (
-          <a disabled={editingKey !== ''} onClick={() => edit(record)}>
-            <FormOutlined />
-          </a>
-        );
+            <a disabled={editingKey !== ''} onClick={() => edit(record)}>
+              <FormOutlined />
+            </a>
+          );
       },
     },
     {
-        title: 'Xóa',
-        dataIndex: 'delete',
-        width: '8%',
-        render: (text, record) =>
+      title: 'Xóa',
+      dataIndex: 'delete',
+      width: '8%',
+      render: (text, record) =>
         originData.length >= 1 ? (
-          <Popconfirm title="Sure to delete?" onConfirm={()=>handleDelete(record.key)}>
+          <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record.key)}>
             <a><DeleteOutlined /></a>
           </Popconfirm>
         ) : null
@@ -248,10 +253,20 @@ const SignEmployee = (props) => {
             cell: EditableCell,
           },
         }}
-        bordered
+        
         dataSource={data}
         columns={mergedColumns}
         rowClassName="editable-row"
+        title={() =>
+          <div style={{display: 'flex', justifyContent:'space-between'}} >
+            <p style={{fontSize: 18, }}>Người kí (VNU-UET)</p>
+            <Search
+              placeholder="Search for ..."
+              onSearch={value => console.log(value)}
+              style={{ width: 250, borderRadius: 20 }}
+            />
+          </div>
+        }
         pagination={{
           onChange: cancel,
         }}

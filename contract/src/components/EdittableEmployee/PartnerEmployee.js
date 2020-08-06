@@ -7,6 +7,8 @@ import {
   } from '@ant-design/icons';
 import * as actions from '../../store/actions';
 import { connect } from 'react-redux';
+
+const { Search } = Input;
 const originData = [
     // {
     //     key: '1',
@@ -241,17 +243,27 @@ const SignEmployee = (props) => {
     };
   });
   return (
-    <Form form={form} component={false}>
+    <Form form={form} component={false} style={{border: 1}}>
       <Table
         components={{
           body: {
             cell: EditableCell,
           },
         }}
-        bordered
+        // bordered
         dataSource={data}
         columns={mergedColumns}
         rowClassName="editable-row"
+        title={() =>
+          <div style={{display: 'flex', justifyContent:'space-between'}}>
+            <p style={{fontSize: 18, }}>Đơn vị theo dõi</p>
+            <Search
+              placeholder="Search for ..."
+              onSearch={value => console.log(value)}
+              style={{ width: 250 }}
+            />
+          </div>
+        }
         pagination={{
           onChange: cancel,
         }}
