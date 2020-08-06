@@ -13,7 +13,7 @@ const tailLayout = {
   wrapperCol: { offset: 8, span: 16 },
 };
 
-const FormAddEmployee = (props) => {
+const FormAddSign = (props) => {
 
   const [form] = Form.useForm();
 
@@ -21,7 +21,7 @@ const FormAddEmployee = (props) => {
 
 
   const onFinish = values => {
-    props.addToTable(values)
+    props.addSignEmployeeToTable(values)
   };
 
   const onReset = () => {
@@ -36,7 +36,7 @@ const FormAddEmployee = (props) => {
 
       </Form.Item>
 
-      <Form.Item name="role" label="chức vụ" rules={[{ required: true }]}>
+      <Form.Item name="role" label="Chức vụ" rules={[{ required: true }]}>
         <Select
           placeholder="Chọn chức vụ"
           //   onChange={onGenderChange}
@@ -61,9 +61,9 @@ const FormAddEmployee = (props) => {
   );
 };
 const mapStateToProps = state => ({
-
+  signEmployee : state.formEdit.signEmployee
 })
 const mapDispatchToProps = dispatch => ({
-  addToTable: (country) => dispatch(actions.addToTable(country)),
+  addSignEmployeeToTable: (signEmployee) => dispatch(actions.addSignEmployeeToTable(signEmployee)),
 })
-export default connect(mapStateToProps, mapDispatchToProps)(FormAddEmployee);
+export default connect(mapStateToProps, mapDispatchToProps)(FormAddSign);

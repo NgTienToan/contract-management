@@ -43,7 +43,7 @@ const FormAddPartner = (props) => {
         <Input type="password" />
 
       </Form.Item>
-      <Form.Item name="passwordPartner" label="Nhập lại mật khẩu" rules={[{ required: true }]} >
+      <Form.Item name="repasswordPartner" label="Nhập lại mật khẩu" rules={[{ required: true }]} >
         <Input type="password" />
 
       </Form.Item>
