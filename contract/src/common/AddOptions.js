@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { Menu, Dropdown, message, Button } from 'antd';
 import { DownOutlined, CaretDownOutlined , UpOutlined} from '@ant-design/icons';
 import FormAddOptions from './FormAddOptions'
-import PartnerInfoAddForm from '../components/PartnerInfo/PartnerInfoAddForm'
 import style from './AddOptions.css'
+import PartnerInfoAddForm from '../components/PartnerInfo/PartnerInfoAddForm'
+
 
 function AddOptions() {
     const [toggle, setToggle] = useState()
@@ -15,16 +16,7 @@ function AddOptions() {
             >
                 Thêm Quốc Gia
             </Menu.Item>
-            <Menu.Item key="2"
-                onClick={()=>setToggle(2)}
-            >
-                Thêm b
-            </Menu.Item>
-            <Menu.Item key="3"
-                onClick={()=>setToggle(3)}
-            >
-                Thêm c
-            </Menu.Item>
+            
         </Menu>
     );
 
@@ -40,8 +32,8 @@ function AddOptions() {
             {toggle ?   
                             <div >                
                                 <Button   onClick={()=>setToggle(false)}><UpOutlined /></Button>
-                                {/* <FormAddOptions/>     */}
-                                <PartnerInfoAddForm />
+                                <FormAddOptions/>    
+                                {/* <PartnerInfoAddForm /> */}
                             </div> 
                     : null
             }

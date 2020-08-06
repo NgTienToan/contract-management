@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Form, Input, Button, Select, DatePicker } from 'antd';
-import { UpOutlined } from '@ant-design/icons';
-// import style from './FormAddOption.css'
 import * as actions from '../../store/actions';
 import { connect } from 'react-redux';
 const { Option } = Select;
@@ -38,7 +36,7 @@ const PartnerInfoAddForm = (props) => {
       </Form.Item>
       <Form.Item name="country" label="Quốc Gia" rules={[{ required: true }]} >
         <Select placeholder="Chọn Quốc Gia" allowClear>
-           {props.country.map(item => {
+           {this.props.country.map(item => {
              return <Option value={item.country} ></Option>
            })}
         </Select>
