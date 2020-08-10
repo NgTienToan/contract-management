@@ -5,88 +5,91 @@ import {
     DeleteOutlined,
     FormOutlined
 } from '@ant-design/icons';
+
+import * as actions from '../../store/actions';
+import { connect } from 'react-redux';
 const { TextArea } = Input;
 const originData = [
-    {
-        partnerName: 'Claude Bernard 1',
-        signEmployee: 'VNU-UET',
-        content: 'Châu Mỹ',
-        date: '17/12/2019',
-        note : 'Hello xin chào',
-        renew: ''
-    },
-    {
-        partnerName: 'Claude Bernard 2',
-        signEmployee: 'VNU-ULIS',
-        content: 'Châu Mỹ',
-        date: '17/12/2019',
-        note : 'Hello xin chào',
-        renew: ''
-    },
-    {
-        partnerName: 'Claude Bernard 1',
-        signEmployee: 'VNU-UET',
-        content: 'Châu Mỹ',
-        date: '17/12/2019',
-        note : 'Hello xin chào',
-        renew: ''
-    },
-    {
-        partnerName: 'Claude Bernard 2',
-        signEmployee: 'VNU-ULIS',
-        content: 'Châu Mỹ',
-        date: '17/12/2019',
-        note : 'Hello xin chào',
-        renew: ''
-    },
-    {
-        partnerName: 'Claude Bernard 1',
-        signEmployee: 'VNU-UET',
-        content: 'Châu Mỹ',
-        date: '17/12/2019',
-        note : 'Hello xin chào',
-        renew: ''
-    },
-    {
-        partnerName: 'Claude Bernard 2',
-        signEmployee: 'VNU-ULIS',
-        content: 'Châu Mỹ',
-        date: '17/12/2019',
-        note : 'Hello xin chào',
-        renew: ''
-    },
-    {
-        partnerName: 'Claude Bernard 1',
-        signEmployee: 'VNU-UET',
-        content: 'Châu Mỹ',
-        date: '17/12/2019',
-        note : 'Hello xin chào',
-        renew: ''
-    },
-    {
-        partnerName: 'Claude Bernard 1',
-        signEmployee: 'VNU-UET',
-        content: 'Châu Mỹ',
-        date: '17/12/2019',
-        note : 'Hello xin chào',
-        renew: ''
-    },
-    {
-        partnerName: 'Claude Bernard 1',
-        signEmployee: 'VNU-UET',
-        content: 'Châu Mỹ',
-        date: '17/12/2019',
-        note : 'Hello xin chào',
-        renew: ''
-    },
-    {
-        partnerName: 'Claude Bernard 1',
-        signEmployee: 'VNU-UET',
-        content: 'Châu Mỹ',
-        date: '17/12/2019',
-        note : 'Hello xin chào',
-        renew: ''
-    },
+    // {
+    //     partnerName: 'Claude Bernard 1',
+    //     signEmployee: 'VNU-UET',
+    //     content: 'Châu Mỹ',
+    //     date: '17/12/2019',
+    //     note : 'Hello xin chào',
+    //     renew: ''
+    // },
+    // {
+    //     partnerName: 'Claude Bernard 2',
+    //     signEmployee: 'VNU-ULIS',
+    //     content: 'Châu Mỹ',
+    //     date: '17/12/2019',
+    //     note : 'Hello xin chào',
+    //     renew: ''
+    // },
+    // {
+    //     partnerName: 'Claude Bernard 1',
+    //     signEmployee: 'VNU-UET',
+    //     content: 'Châu Mỹ',
+    //     date: '17/12/2019',
+    //     note : 'Hello xin chào',
+    //     renew: ''
+    // },
+    // {
+    //     partnerName: 'Claude Bernard 2',
+    //     signEmployee: 'VNU-ULIS',
+    //     content: 'Châu Mỹ',
+    //     date: '17/12/2019',
+    //     note : 'Hello xin chào',
+    //     renew: ''
+    // },
+    // {
+    //     partnerName: 'Claude Bernard 1',
+    //     signEmployee: 'VNU-UET',
+    //     content: 'Châu Mỹ',
+    //     date: '17/12/2019',
+    //     note : 'Hello xin chào',
+    //     renew: ''
+    // },
+    // {
+    //     partnerName: 'Claude Bernard 2',
+    //     signEmployee: 'VNU-ULIS',
+    //     content: 'Châu Mỹ',
+    //     date: '17/12/2019',
+    //     note : 'Hello xin chào',
+    //     renew: ''
+    // },
+    // {
+    //     partnerName: 'Claude Bernard 1',
+    //     signEmployee: 'VNU-UET',
+    //     content: 'Châu Mỹ',
+    //     date: '17/12/2019',
+    //     note : ['heoo', 'lon'],
+    //     renew: ''
+    // },
+    // {
+    //     partnerName: 'Claude Bernard 1',
+    //     signEmployee: 'VNU-UET',
+    //     content: 'Châu Mỹ',
+    //     date: '17/12/2019',
+    //     note : 'Hello xin chào',
+    //     renew: ''
+    // },
+    // {
+    //     partnerName: 'Claude Bernard 1',
+    //     signEmployee: 'VNU-UET',
+    //     content: 'Châu Mỹ',
+    //     date: '17/12/2019',
+    //     note : 'Hello xin chào',
+    //     renew: ''
+    // },
+    // {
+    //     partnerName: 'Claude Bernard 1',
+    //     signEmployee: 'VNU-UET',
+    //     content: 'Châu Mỹ',
+    //     date: '17/12/2019',
+    //     note : 'Hello xin chào',
+    //     renew: ''
+    // },
 
 ];
 
@@ -100,7 +103,7 @@ const EditableCell = ({
     children,
     ...restProps
 }) => {
-    const inputNode = inputType === 'number' ? <InputNumber /> : <TextArea style={{whiteSpace: "pre-line"}} />;
+    const inputNode = inputType === 'number' ? <InputNumber /> : <TextArea style={{ whiteSpace: "pre-line" }} />;
     return (
         <td {...restProps}>
             {editing ? (
@@ -125,7 +128,7 @@ const EditableCell = ({
     );
 };
 
-const ContractInfoTable = () => {
+const ContractInfoTable = (props) => {
     const [form] = Form.useForm();
     const [data, setData] = useState(originData);
     const [editingKey, setEditingKey] = useState('');
@@ -145,6 +148,16 @@ const ContractInfoTable = () => {
     const cancel = () => {
         setEditingKey('');
     };
+    useEffect(() => {
+        if (props.contract != null) {
+            setData([...data, props.contract])
+        }
+    }, [props.contract])
+
+    useEffect(() => {
+        console.log(data.length)
+
+    }, [])
 
     const handleDelete = async (key) => {
         // const originData = [...originData];
@@ -245,12 +258,14 @@ const ContractInfoTable = () => {
             title: 'Xóa',
             dataIndex: 'delete',
             width: '5%',
-            render: (text, record) =>
-                originData.length >= 1 ? (
+            render: (text, record) => {
+                console.log(data)
+                return data.length >= 1 ? (
                     <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record.key)}>
                         <a><DeleteOutlined /></a>
                     </Popconfirm>
                 ) : null
+            }
         }
     ];
     const mergedColumns = columns.map(col => {
@@ -277,7 +292,7 @@ const ContractInfoTable = () => {
                         cell: EditableCell,
                     },
                 }}
-                bordered
+                // bordered
                 dataSource={data}
                 columns={mergedColumns}
                 rowClassName="editable-row"
@@ -288,4 +303,10 @@ const ContractInfoTable = () => {
         </Form>
     );
 };
-export default ContractInfoTable;
+const mapStateToProps = state => ({
+    contract: state.formEdit.contractList
+})
+const mapDispatchToProps = dispatch => ({
+
+})
+export default connect(mapStateToProps, mapDispatchToProps)(ContractInfoTable);

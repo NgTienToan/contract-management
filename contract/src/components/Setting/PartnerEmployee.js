@@ -252,6 +252,7 @@ const SignEmployee = (props) => {
           },
         }}
         // bordered
+        style={{ whiteSpace: 'pre'}}
         dataSource={data}
         columns={mergedColumns}
         rowClassName="editable-row"

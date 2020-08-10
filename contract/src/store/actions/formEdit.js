@@ -21,3 +21,11 @@ export const addPartnerToTable = (partner) => {
   })
 }
 
+export const addContractToTable = (contract) => {
+  return ({
+    type: actions.ADD_CONTRACT_TO_TABLE,
+    contract
+  })
+}
+
+

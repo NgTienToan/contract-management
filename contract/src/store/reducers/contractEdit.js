@@ -7,7 +7,7 @@ const initialState = {
 const filterContract = (state, action) => {
   let result = [];
 
-  result = 
+
 }
 
 

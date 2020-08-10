@@ -17,15 +17,19 @@ const tailLayout = {
 const PartnerInfoAddForm = (props) => {
 
   const [form] = Form.useForm();
-
+  // const [data, setData] = useState();
   const onFinish = values => {
-    props.addToTable(values)
+    // props.addToTable(values)
+    console.log(values)
   };
 
   const onReset = () => {
     form.resetFields();
   };
-
+  useEffect(()=>{
+    console.log(props.country)
+    console.log('heoo')
+  },[props.country])
 
 
   return (
@@ -34,11 +38,11 @@ const PartnerInfoAddForm = (props) => {
         <Input />
 
       </Form.Item>
-      <Form.Item name="country" label="Quốc Gia" rules={[{ required: true }]} >
+      <Form.Item name="country" label="Quốc Gia" rules={[{ required: false }]} >
         <Select placeholder="Chọn Quốc Gia" allowClear>
-           {this.props.country.map(item => {
+           {/* {props.country.map(item => {
              return <Option value={item.country} ></Option>
-           })}
+           })} */}
         </Select>
 
       </Form.Item>
@@ -80,6 +84,7 @@ const PartnerInfoAddForm = (props) => {
 };
 const mapStateToProps = state => ({
   country : state.formEdit.currentCountry
+  
 })
 const mapDispatchToProps = dispatch => ({
   // addToTable: (country) => dispatch(actions.addToTable(country)),

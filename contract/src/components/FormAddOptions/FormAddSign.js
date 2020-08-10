@@ -43,9 +43,9 @@ const FormAddSign = (props) => {
           allowClear
 
         >
-          <Option value="asia">Châu Á</Option>
-          <Option value="euro">Châu ÂU</Option>
-          <Option value="america">Châu Mỹ</Option>
+          <Option value="Khoa1">Chủ nhiệm khoa</Option>
+          <Option value="Khoa2">Phó chủ nhiệm khoa</Option>
+          <Option value="Giang Vien">Giảng viên</Option>
         </Select>
       </Form.Item>
       <Form.Item {...tailLayout}>

@@ -5,7 +5,7 @@ import AddPartnerOptions from '../PartnerInfo/AddPartnerOptions'
 function ContractInfo() {
     return (
         <div>
-            <AddPartnerOptions/>
+            {/* <AddPartnerOptions/> */}
             <ContractSelect />
             <ContractInfoTable/>
         </div>

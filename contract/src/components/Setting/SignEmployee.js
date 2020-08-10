@@ -12,66 +12,66 @@ import { connect } from 'react-redux';
 
 const { Search } = Input;
 const originData = [
-  // {
-  //     key: '1',
-  //     name: 'Nguyễn Tiến Toàn',
-  //     role: 'Châu Mỹ',
-  //     unit: 'FIT'   
-  //   },
-  //   {
-  //     key: '2',
-  //     name: 'Nguyễn Tiến Toàn',
-  //     role: 'Châu Mỹ',
-  //     unit: 'FIT'   
-  //   },
-  //   {
-  //     key: '3',
-  //     name: 'Nguyễn Tiến Toàn',
-  //     role: 'Châu Mỹ',
-  //     unit: 'FIT'   
-  //   },
-  //   {
-  //     key: '4',
-  //     name: 'Nguyễn Tiến Toàn',
-  //     role: 'Châu Mỹ',
-  //     unit: 'FIT'   
-  //   },
-  //   {
-  //     key: '5',
-  //     name: 'Nguyễn Tiến Toàn',
-  //     role: 'Châu Mỹ',
-  //     unit: 'FIT'   
-  //   },
-  //   {
-  //     key: '6',
-  //     name: 'Nguyễn Tiến Toàn',
-  //     role: 'Châu Mỹ',
-  //     unit: 'FIT'   
-  //   },
-  //   {
-  //     key: '7',
-  //     name: 'Nguyễn Tiến Toàn',
-  //     role: 'Châu Mỹ',
-  //     unit: 'FIT'   
-  //   },
-  //   {
-  //     key: '8',
-  //     name: 'Nguyễn Tiến Toàn',
-  //     role: 'Châu Mỹ',
-  //     unit: 'FIT'   
-  //   },
-  //   {
-  //     key: '9',
-  //     name: 'Nguyễn Tiến Toàn',
-  //     role: 'Châu Mỹ',
-  //     unit: 'FIT'   
-  //   },
-  //   {
-  //     key: '10',
-  //     name: 'Nguyễn Tiến Toàn',
-  //     role: 'Châu Mỹ',
-  //     unit: 'FIT'   
-  //   },
+  {
+      key: '1',
+      name: 'Dang Tiến Toàn',
+      role: 'Châu Mỹ',
+      unit: 'FIT'   
+    },
+    {
+      key: '2',
+      name: 'Nguyễn Tiến Toàn',
+      role: 'Châu Mỹ',
+      unit: 'FIT'   
+    },
+    {
+      key: '3',
+      name: 'Nguyễn Tiến Toàn',
+      role: 'Châu Mỹ',
+      unit: 'FIT'   
+    },
+    {
+      key: '4',
+      name: 'Nguyễn Tiến Toàn',
+      role: 'Châu Mỹ',
+      unit: 'FIT'   
+    },
+    {
+      key: '5',
+      name: 'Nguyễn Tiến Toàn',
+      role: 'Châu Mỹ',
+      unit: 'FIT'   
+    },
+    {
+      key: '6',
+      name: 'Nguyễn Tiến Toàn',
+      role: 'Châu Mỹ',
+      unit: 'FIT'   
+    },
+    {
+      key: '7',
+      name: 'Nguyễn Tiến Toàn',
+      role: 'Châu Mỹ',
+      unit: 'FIT'   
+    },
+    {
+      key: '8',
+      name: 'Nguyễn Tiến Toàn',
+      role: 'Châu Mỹ',
+      unit: 'FIT'   
+    },
+    {
+      key: '9',
+      name: 'Nguyễn Tiến Toàn',
+      role: 'Châu Mỹ',
+      unit: 'FIT'   
+    },
+    {
+      key: '10',
+      name: 'Nguyễn Tiến Toàn',
+      role: 'Châu Mỹ',
+      unit: 'FIT'   
+    },
 
 ];
 
@@ -143,6 +143,8 @@ const SignEmployee = (props) => {
     console.log(data)
   };
 
+  
+
   const save = async key => {
     try {
       const row = await form.validateFields();
@@ -164,9 +166,26 @@ const SignEmployee = (props) => {
     }
   };
 
+
+  const [value, setValue] = useState('');
+
+  const FilterByNameInput = () => {
+    return <Input
+      placeholder="Search Name"
+      value={value}
+      onChange={e => {
+        const currValue = e.target.value;
+        setValue(currValue);
+        const filteredData = originData.filter(entry =>
+          entry.name.includes(currValue)
+        );
+        setData(filteredData);
+      }}
+    />
+  }
   const columns = [
     {
-      title: 'Mã người kí',
+      title: FilterByNameInput,
       dataIndex: 'key',
       width: '10%',
       editable: true,
@@ -221,14 +240,15 @@ const SignEmployee = (props) => {
       title: 'Xóa',
       dataIndex: 'delete',
       width: '8%',
-      render: (text, record) =>
-        originData.length >= 1 ? (
-          <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record.key)}>
-            <a><DeleteOutlined /></a>
-          </Popconfirm>
-        ) : null
-    }
-  ];
+      render: (text, record) =>{
+        // console.log(data)
+      return data.length >= 1 ? (
+        <Popconfirm title="Sure to delete?" onConfirm={()=>handleDelete(record.key)}>
+          <a><DeleteOutlined/></a>
+        </Popconfirm>
+      ) : null}
+  }
+];
   const mergedColumns = columns.map(col => {
     if (!col.editable) {
       return col;
@@ -260,11 +280,13 @@ const SignEmployee = (props) => {
         title={() =>
           <div style={{display: 'flex', justifyContent:'space-between'}} >
             <p style={{fontSize: 18, }}>Người kí (VNU-UET)</p>
-            <Search
+            {/* <Search
+
               placeholder="Search for ..."
-              onSearch={value => console.log(value)}
+              onSearch={onChange}
               style={{ width: 250, borderRadius: 20 }}
-            />
+            /> */}
+            <FilterByNameInput />
           </div>
         }
         pagination={{
